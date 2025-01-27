@@ -7,12 +7,15 @@ function generatePlane() {
   const minY = parseInt(document.getElementById('minY').value, 10);
   const maxY = parseInt(document.getElementById('maxY').value, 10);
 
+  const margin = 40;  // Margin space around the coordinate plane
   const width = canvas.width;
   const height = canvas.height;
-  const centerX = width / 2;
-  const centerY = height / 2;
-  const unitX = width / (maxX - minX); // Pixels per unit on the X-axis
-  const unitY = height / (maxY - minY); // Pixels per unit on the Y-axis
+  const drawingWidth = width - 2 * margin;
+  const drawingHeight = height - 2 * margin;
+  const centerX = margin + drawingWidth / 2;
+  const centerY = margin + drawingHeight / 2;
+  const unitX = drawingWidth / (maxX - minX); // Pixels per unit on the X-axis
+  const unitY = drawingHeight / (maxY - minY); // Pixels per unit on the Y-axis
 
   // Clear canvas
   ctx.clearRect(0, 0, width, height);
@@ -25,16 +28,16 @@ function generatePlane() {
   for (let x = minX; x <= maxX; x++) {
     const posX = centerX + x * unitX;
     ctx.beginPath();
-    ctx.moveTo(posX, 0);
-    ctx.lineTo(posX, height);
+    ctx.moveTo(posX, margin);
+    ctx.lineTo(posX, height - margin);
     ctx.stroke();
   }
 
   for (let y = minY; y <= maxY; y++) {
     const posY = centerY - y * unitY;
     ctx.beginPath();
-    ctx.moveTo(0, posY);
-    ctx.lineTo(width, posY);
+    ctx.moveTo(margin, posY);
+    ctx.lineTo(width - margin, posY);
     ctx.stroke();
   }
 
@@ -44,14 +47,14 @@ function generatePlane() {
 
   // X-axis
   ctx.beginPath();
-  ctx.moveTo(0, centerY);
-  ctx.lineTo(width, centerY);
+  ctx.moveTo(margin, centerY);
+  ctx.lineTo(width - margin, centerY);
   ctx.stroke();
 
   // Y-axis
   ctx.beginPath();
-  ctx.moveTo(centerX, 0);
-  ctx.lineTo(centerX, height);
+  ctx.moveTo(centerX, margin);
+  ctx.lineTo(centerX, height - margin);
   ctx.stroke();
 
   // Add arrows to axes
@@ -59,17 +62,17 @@ function generatePlane() {
 
   // Arrow for X-axis
   ctx.beginPath();
-  ctx.moveTo(width, centerY);
-  ctx.lineTo(width - arrowSize, centerY - arrowSize / 2);
-  ctx.lineTo(width - arrowSize, centerY + arrowSize / 2);
+  ctx.moveTo(width - margin, centerY);
+  ctx.lineTo(width - margin - arrowSize, centerY - arrowSize / 2);
+  ctx.lineTo(width - margin - arrowSize, centerY + arrowSize / 2);
   ctx.closePath();
   ctx.fill();
 
   // Arrow for Y-axis
   ctx.beginPath();
-  ctx.moveTo(centerX, 0);
-  ctx.lineTo(centerX - arrowSize / 2, arrowSize);
-  ctx.lineTo(centerX + arrowSize / 2, arrowSize);
+  ctx.moveTo(centerX, margin);
+  ctx.lineTo(centerX - arrowSize / 2, margin + arrowSize);
+  ctx.lineTo(centerX + arrowSize / 2, margin + arrowSize);
   ctx.closePath();
   ctx.fill();
 
@@ -93,20 +96,4 @@ function generatePlane() {
     const posY = centerY - y * unitY;
     ctx.fillText(y, centerX - 10, posY);
   }
-}
-
-function downloadImage() {
-  const canvas = document.getElementById('canvas');
-  const link = document.createElement('a');
-  link.download = 'coordinate_plane.png';
-  link.href = canvas.toDataURL();
-  link.click();
-}
-
-function downloadPDF() {
-  const canvas = document.getElementById('canvas');
-  const pdf = new jsPDF('l', 'mm', [canvas.width, canvas.height]);
-  const imgData = canvas.toDataURL('image/png');
-  pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-  pdf.save('coordinate_plane.pdf');
 }
