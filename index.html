@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Coordinate Plane</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    .form-group { margin-bottom: 15px; }
+    canvas { border: 1px solid #000; }
+  </style>
+</head>
+<body>
+  <h1>Custom Coordinate Plane Generator</h1>
+  <div>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+      <label for="type">Coordinate Plane Type:</label>
+      <select id="type">
+        <option value="cartesian">Cartesian</option>
+        <option value="polar">Polar</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="minX">Min X:</label>
+      <input type="number" id="minX" value="-10">
+      <label for="maxX">Max X:</label>
+      <input type="number" id="maxX" value="10">
+    </div>
+    <div class="form-group">
+      <label for="minY">Min Y:</label>
+      <input type="number" id="minY" value="-10">
+      <label for="maxY">Max Y:</label>
+      <input type="number" id="maxY" value="10">
+    </div>
+    <button onclick="generatePlane()">Generate</button>
+    <button onclick="downloadImage()">Download as Image</button>
+    <button onclick="downloadPDF()">Download as PDF</button>
+  </div>
+  <h2 id="planeTitle"></h2>
+  <canvas id="canvas" width="500" height="500"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
