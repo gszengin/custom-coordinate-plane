@@ -115,11 +115,11 @@ function generatePlane() {
 
     // Function to download the canvas as a Image
     function downloadImage() {
-        const canvas = document.getElementById('canvas');
-        const link = document.createElement('a');
-        link.download = 'coordinate-plane.png'; // Set download file name
-        link.href = image;
-        link.click(); // Trigger the download
+    const canvas = document.getElementById('canvas');
+    const link = document.createElement('a');
+    link.download = 'coordinate-plane.png';
+    link.href = canvas.toDataURL(); // Correct usage
+    link.click();
     }
 
    
