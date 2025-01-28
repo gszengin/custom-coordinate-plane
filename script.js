@@ -1,4 +1,3 @@
-// Function to generate the coordinate plane
 function generatePlane() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -7,6 +6,7 @@ function generatePlane() {
     const maxX = parseInt(document.getElementById('maxX').value, 10);
     const minY = parseInt(document.getElementById('minY').value, 10);
     const maxY = parseInt(document.getElementById('maxY').value, 10);
+    const includeArrows = document.getElementById('arrows').checked;
 
     const margin = 40;
     const width = canvas.width;
@@ -57,22 +57,41 @@ function generatePlane() {
     ctx.moveTo(centerX, margin);
     ctx.lineTo(centerX, height - margin);
     ctx.stroke();
-}
 
-// Function to download the canvas as an image
-function downloadImage() {
-    const canvas = document.getElementById('canvas');
-    const link = document.createElement('a');
-    link.download = 'coordinate-plane.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-}
+    // Draw arrows if checkbox is checked
+    if (includeArrows) {
+        const arrowSize = 10;
 
-// Function to download the canvas as a PDF
-function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    const canvas = document.getElementById('canvas');
-    const pdf = new jsPDF();
-    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 180, 160);
-    pdf.save('coordinate-plane.pdf');
+        // Arrow for positive X-axis
+        ctx.beginPath();
+        ctx.moveTo(width - margin, centerY);
+        ctx.lineTo(width - margin - arrowSize, centerY - arrowSize / 2);
+        ctx.lineTo(width - margin - arrowSize, centerY + arrowSize / 2);
+        ctx.closePath();
+        ctx.fill();
+
+        // Arrow for negative X-axis
+        ctx.beginPath();
+        ctx.moveTo(margin, centerY);
+        ctx.lineTo(margin + arrowSize, centerY - arrowSize / 2);
+        ctx.lineTo(margin + arrowSize, centerY + arrowSize / 2);
+        ctx.closePath();
+        ctx.fill();
+
+        // Arrow for positive Y-axis
+        ctx.beginPath();
+        ctx.moveTo(centerX, margin);
+        ctx.lineTo(centerX - arrowSize / 2, margin + arrowSize);
+        ctx.lineTo(centerX + arrowSize / 2, margin + arrowSize);
+        ctx.closePath();
+        ctx.fill();
+
+        // Arrow for negative Y-axis
+        ctx.beginPath();
+        ctx.moveTo(centerX, height - margin);
+        ctx.lineTo(centerX - arrowSize / 2, height - margin - arrowSize);
+        ctx.lineTo(centerX + arrowSize / 2, height - margin - arrowSize);
+        ctx.closePath();
+        ctx.fill();
+    }
 }
