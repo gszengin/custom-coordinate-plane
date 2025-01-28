@@ -117,10 +117,13 @@ function generatePlane() {
     function downloadImage() {
         const canvas = document.getElementById('canvas');
         const link = document.createElement('a');
+        document.getElementById('canvas').href = link;
         link.download = 'coordinate-plane.png'; // Set download file name
         link.href = image;
         link.click(); // Trigger the download
     }
+
+   
 
     // Function to download the canvas as a PDF
     function downloadPDF() {
