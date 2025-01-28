@@ -113,7 +113,6 @@ function generatePlane() {
       ctx.fillText(y, centerX - 10, posY);
     }
 
-    // Function to download the canvas as a Image
     function downloadImage() {
     const canvas = document.getElementById('canvas');
     const link = document.createElement('a');
@@ -122,15 +121,12 @@ function generatePlane() {
     link.click();
     }
 
-   
-
-    // Function to download the canvas as a PDF
     function downloadPDF() {
-        const { jsPDF } = window.jspdf;
-        const canvas = document.getElementById('canvas');
-        const pdf = new jsPDF();
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 180, 160);
-        pdf.save('coordinate-plane.pdf');
+    const { jsPDF } = window.jspdf;
+    const canvas = document.getElementById('canvas');
+    const pdf = new jsPDF();
+    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 180, 160);
+    pdf.save('coordinate-plane.pdf');
     }
 
   }
