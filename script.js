@@ -7,6 +7,7 @@ function generatePlane() {
     const minY = parseInt(document.getElementById('minY').value, 10);
     const maxY = parseInt(document.getElementById('maxY').value, 10);
     const includeArrows = document.getElementById('arrows').checked;
+    const includeNumbers = document.getElementById('numbers').checked;
 
     const margin = 40;
     const width = canvas.width;
@@ -93,5 +94,28 @@ function generatePlane() {
         ctx.lineTo(centerX + arrowSize / 2, height - margin - arrowSize);
         ctx.closePath();
         ctx.fill();
+    }
+
+    // Add numbers to axes if checkbox is checked
+    if (includeNumbers) {
+        ctx.fillStyle = '#000';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        // Numbers on X-axis
+        for (let x = minX; x <= maxX; x++) {
+            if (x === 0) continue; // Skip the origin
+            const posX = centerX + x * unitX;
+            ctx.fillText(x, posX, centerY + 15);
+        }
+
+        // Numbers on Y-axis
+        ctx.textAlign = 'right';
+        for (let y = minY; y <= maxY; y++) {
+            if (y === 0) continue; // Skip the origin
+            const posY = centerY - y * unitY;
+            ctx.fillText(y, centerX - 10, posY);
+        }
     }
 }
