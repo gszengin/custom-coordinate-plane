@@ -116,7 +116,6 @@ function generatePlane() {
     // Function to download the canvas as a Image
     function downloadImage() {
         const canvas = document.getElementById('canvas');
-        const image = canvas.toDataURL('image/png');
         const link = document.createElement('a');
         link.download = 'coordinate-plane.png'; // Set download file name
         link.href = image;
@@ -125,18 +124,12 @@ function generatePlane() {
 
     // Function to download the canvas as a PDF
     function downloadPDF() {
-    const canvas = document.getElementById('canvas');
-    const image = canvas.toDataURL('image/png');
-  
-    // Create a PDF using jsPDF
-    const pdf = new jsPDF({
-      orientation: 'landscape',
-      unit: 'px',
-      format: [canvas.width, canvas.height],
-    });
-    pdf.addImage(image, 'PNG', 0, 0, canvas.width, canvas.height);
-    pdf.save('coordinate-plane.pdf'); // Set download file name
-  }
+        const { jsPDF } = window.jspdf;
+        const canvas = document.getElementById('canvas');
+        const pdf = new jsPDF();
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 180, 160);
+        pdf.save('coordinate-plane.pdf');
+    }
 
   }
   
