@@ -208,7 +208,7 @@ function downloadPDF() {
     yOffset += 40; // Move down for graph
 
     // Convert canvas to image
-    const image = canvas.toDataURL("image/png");
+    const image = canvas.toDataURL("image/png",1.0);
 
     if (planeCount == "1") {
         // Single Plane - Center it on the page
