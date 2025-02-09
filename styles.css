@@ -1,101 +1,122 @@
-/* General Page Styling */
 body {
     font-family: Arial, sans-serif;
-    text-align: left;
-    margin: 20px;
+    align-items: flex-start;
+    text-align: center;
     background-color: #ffffff;
+    width: 600px;
+    margin-left: 20px;
 }
 
-/* Form Styling */
-.form-group {
-    margin-bottom: 15px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.wide-input {
+.container-1 {
     width: 100%;
-    max-width: 400px; /* Adjust as needed */
-    padding: 5px;
-  }
-
-.input-group {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .small-input {
-    width: 60px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.checkbox-group {
-    margin-bottom: 15px;
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-label {
+.container-2 {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    background: rgb(241, 245, 231);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: 32px;
     font-weight: bold;
-    margin-right: 10 px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input, select {
-    padding: 5px;
-    font-size: 14px;
-    margin: 5px;
+.container-3 {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    background: lightblue;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+#question-box {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+input {
+    padding: 10px;
+    width: 40%;
+    font-size: 32px;
+    text-align: center;
+}
+
+.container-4 {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start; /* Aligns everything to the left */
+    background: rgb(222, 246, 222);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#timerOptions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adds spacing */
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start; /* Aligns radio buttons to the left */
+}
+
+#timerOptions label {
+    margin-right: 15px; /* Adds spacing between radio buttons */
 }
 
 button {
-    background-color: #007bff;
+    padding: 10px 15px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    background: #007BFF;
     color: white;
     border: none;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
     border-radius: 5px;
-    margin: 5px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: #0056b3;
 }
 
-/* Canvas Styling */
-canvas {
-    border: 2px solid black;
-    background-color: white;
+.scoreboard {
     margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    
 }
 
-/* Flexbox for Full Name & Date */
-.header-container {
-    display: flex;
-    justify-content: space-between;
+#certificate {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    display: block;
     width: 80%;
-    margin: auto;
-    font-size: 16px;
-    font-weight: bold;
+    margin: 20px auto;
+    border: 15px double gold; /* Elegant gold border */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
-
-/* Grid and Axis Customization */
-.color-picker {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 10px 0;
-}
-
-.color-picker label {
-    font-weight: bold;
-}
-
